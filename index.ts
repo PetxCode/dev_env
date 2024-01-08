@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import { mainApp } from "./mainApp";
 
 dotenv.config();
 
@@ -10,6 +11,7 @@ const port: number = parseInt(process.env.PORT!);
 app.use(cors());
 app.use(express.json());
 
+mainApp(app);
 const server = app.listen(port, () => {
   console.log("connected");
 });
