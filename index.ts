@@ -2,6 +2,7 @@ import express, { Application } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { mainApp } from "./mainApp";
+import { dbConfig } from "./utils/dbConfig";
 
 dotenv.config();
 
@@ -13,7 +14,9 @@ app.use(express.json());
 
 mainApp(app);
 const server = app.listen(port, () => {
-  console.log("connected");
+  console.clear();
+  console.log("");
+  dbConfig();
 });
 
 process.on("uncaughtException", (err: Error) => {
